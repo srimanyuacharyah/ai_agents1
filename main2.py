@@ -21,7 +21,7 @@ def get_weather(city: str) -> str:
     return f"It's always sunny in {city}!"
 
 model = ChatGoogleGenerativeAI(
-    model="gemini-3-flash-preview",
+    model="gemini-2.5-flash",
     temperature=1.0,
 )
 
