@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
+from email_sender import send_email 
 
 import warnings
 warnings.filterwarnings("ignore", message=".*Pydantic V1.*")
@@ -26,13 +27,13 @@ model = ChatGoogleGenerativeAI(
 
 agent = create_agent(
     model=model,
-    tools=[get_weather,is_prime],
+    tools=[get_weather,is_prime,send_email],
     system_prompt="You are a helpful assistant",
 )
 
 # Run the agent
 response = agent.invoke(
-    {"messages": [{"role": "user", "content": "what is the weather in mysore and is 2001 prime?"}]}
+    {"messages": [{"role": "user", "content": "what is the weather in mysore and is 2001 prime? send an email to sumanpone8@gmail.com"}]}
 )
 
 # Print only the final AI response
